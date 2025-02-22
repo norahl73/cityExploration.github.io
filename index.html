@@ -170,6 +170,10 @@
                 border-top-right-radius: 8px;
                 width: 80%;
                 height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
             }
             
             .card img {
@@ -309,7 +313,6 @@
             
             /*===============Footer===================*/
             .footer {
-                background-image: url("https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293781/pine-tree_mq2sgp.jpg");
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -320,6 +323,7 @@
                 flex-flow: row wrap;
                 justify-content: center;
                 align-items: center;
+                color: #4a574e;
             }
             
             .footer::before {
@@ -577,7 +581,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="zoom-img">
-                        <div class="img-card" style="text-align: center;"> <img src="images/downtown.jpg" alt="downtown" width=100% onclick="window.location.href='downtown/downtown.html';" style="cursor: pointer;">
+                        <div class="img-card" style="text-align: center;"> <img src="images/downtown.jpg" alt="downtown" onclick="window.location.href='downtown/downtown.html';" style="cursor: pointer;">
                         </div>
                     </div>
                     <div class="text"> <span class="rating"></span>
@@ -586,7 +590,7 @@
                 </div>
                 <div class="card">
                     <div class="zoom-img">
-                        <div class="img-card" style="text-align: center;"> <img src="images/dairymarket.jpg" alt="dairymarket" width=100% onclick="window.location.href='dairymarket/dairymarket.html';" style="cursor: pointer;"> </div>
+                        <div class="img-card" style="text-align: center;"> <img src="images/dairymarket.jpg" alt="dairymarket" onclick="window.location.href='dairymarket/dairymarket.html';" style="cursor: pointer;"> </div>
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>The Dairy Market</h2>
