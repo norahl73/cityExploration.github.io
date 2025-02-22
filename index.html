@@ -577,13 +577,12 @@
     </style>
 </head>
 
-<body>
     <body>
         <!--===========Nav Bar=================-->
         <section class="nav-bar">
             <div class="logo">Explore Charlottesville!</div>
             <ul class="menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#">Popular Restaurants</a></li>
                 <li><a href="#">Ting Pavilion</a></li>
                 <li><a href="#">History</a></li>
@@ -618,11 +617,9 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>The Dark Forest Adventure</h2>
-                        <p class="cost">$1870 / Per Person</p>
-                        <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Vancouver, Canada</p>
-                        </div>
+                        <nav>
+                            <a> href="downtown/testpage.html" onclick="loadPage(event, 'downtown/testpage.html')">Home</a>
+                        </nav>
                     </div>
                 </div>
                 <div class="card">
@@ -669,9 +666,15 @@
                 </ul>
             </div>
         </div>
+        <script>
+            function loadPage(event, page) {
+                event.preventDefault();
+                fetch(page)
+                    .then(response => response.text())
+                    .then(html => document.getElementById('content').innerHTML = html)
+                    .catch(error => console.error('Error loading page:', error));
+            }
+        </script>
     </body>
-
-</html>
-</body>
 
 </html>
