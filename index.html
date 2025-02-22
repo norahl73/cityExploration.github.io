@@ -28,6 +28,9 @@
                 margin: 0;
                 padding: 0;
             }
+            section {
+                padding: 50px 0;
+            }
             .header {
                 padding: 60px;
                 text-align: center;
@@ -185,6 +188,8 @@
             }
             
             .card img {
+                display: block;
+                margin: 0 auto;
                 max-width: 100%;
                 height: 300px;
                 border-radius: 8px;
@@ -215,6 +220,9 @@
             
             /*------------Zoom in Photos--------------*/
             .zoom-img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 float: left;
                 position: relative;
                 width: 100%;
@@ -578,7 +586,7 @@
     </head>
 
     <body>
-        <div class="header" padding-bottom="50px">
+        <div class="header">
             <h1>Let's Explore Charlotteville!</h1>
         </div>
         <!--==============Downtown or DM===================-->
@@ -589,7 +597,7 @@
             <div class="cards" padding-bottom="50px">
                 <div class="card">
                     <div class="zoom-img">
-                        <div class="img-card" style="text-align: center;"> <img src="images/downtown.jpg" alt="downtown" onclick="window.location.href='downtown/downtown.html';" style="cursor: pointer;">
+                        <div class="img-card"> <img src="images/downtown.jpg" alt="downtown" onclick="window.location.href='downtown/downtown.html';" style="cursor: pointer;">
                         </div>
                     </div>
                     <div class="text"> <span class="rating"></span>
@@ -598,7 +606,7 @@
                 </div>
                 <div class="card">
                     <div class="zoom-img">
-                        <div class="img-card" style="text-align: center;"> <img src="images/dairymarket.jpg" alt="dairymarket" onclick="window.location.href='dairymarket/dairymarket.html';" style="cursor: pointer;"> </div>
+                        <div class="img-card"> <img src="images/dairymarket.jpg" alt="dairymarket" onclick="window.location.href='dairymarket/dairymarket.html';" style="cursor: pointer;"> </div>
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>The Dairy Market</h2>
@@ -608,7 +616,6 @@
         <!--===========Footer=================-->
         <div class="footer">
             <div class="links">
-                <h3>Quick Links</h3>
                 <ul>
                     <li>Offers & Discounts</li>
                     <li>Get Coupon</li>
