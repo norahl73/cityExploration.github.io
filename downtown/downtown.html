@@ -28,6 +28,21 @@
                 margin: 0;
                 padding: 0;
             }
+            .rating-container {
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+            .star {
+                color: gray;
+                transition: color 0.3s;
+            }
+            .star:hover,
+            .star.active {
+                color: gold;
+            }
             .header {
                 padding: 60px;
                 text-align: center;
@@ -208,6 +223,7 @@
                 align-items: center;
                 justify-content: center;
                 text-align: center;
+                width: 200px;
             }
 
             .cards .location {
@@ -620,10 +636,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>New Dominion Bookshop</h2>
-                        <p class="cost"></p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Vancouver, Canada</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -633,10 +654,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>The Paramount</h2>
-                        <p class="cost"></p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Paris, France</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -646,10 +672,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>Fralin Museum of Art</h2>
-                        <p class="cost"></p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Monaco, Monaco</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -659,10 +690,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>Charlottesvile City Market</h2>
-                        <p class="cost"></p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Bern, Switzerland</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -672,10 +708,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>The Whiskey Jar</h2>
-                        <p class="cost">$20–30</p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Seoul, South Korea</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -685,10 +726,15 @@
                     </div>
                     <div class="text"> <span class="rating"></span>
                         <h2>Virginia Discovery Museum </h2>
-                        <p class="cost"></p>
                         <div class="card-box">
-                            <p class="time"> 3 Days</p>
-                            <p class="location"> Tokyo, japan</p>
+                            <div class="rating-container">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                            <script src="script.js"></script>
                         </div>
                     </div>
                 </div>
@@ -721,6 +767,31 @@
                     .then(response => response.text())
                     .then(html => document.getElementById('content').innerHTML = html)
                     .catch(error => console.error('Error loading page:', error));
+            }
+            const stars = document.querySelectorAll(".star");
+            const ratingValue = document.getElementById("rating-value");
+
+            stars.forEach(star => {
+                star.addEventListener("click", function() {
+                    let value = this.getAttribute("data-value");
+                    ratingValue.textContent = `Selected Rating: ${value}`;
+                    highlightStars(value);
+                });
+
+                star.addEventListener("mouseover", function() {
+                    highlightStars(this.getAttribute("data-value"));
+                });
+
+                star.addEventListener("mouseout", function() {
+                    let selectedValue = ratingValue.textContent.split(": ")[1];
+                    highlightStars(selectedValue);
+                });
+            });
+
+            function highlightStars(value) {
+                stars.forEach(star => {
+                    star.classList.toggle("active", star.getAttribute("data-value") <= value);
+                });
             }
         </script>
     </body>
