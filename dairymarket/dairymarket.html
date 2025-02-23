@@ -490,11 +490,12 @@
         .footer {
             width: 100%;
             height: 100px;
-            background-color: #4a574e;
+            position: relative;
             display: flex;
+            flex-flow: row wrap;
             justify-content: center;
             align-items: center;
-            margin-top: auto;
+            background-color: #4a574e;
         }
         .footer h3 {
             font-family: Fraunces;
@@ -503,6 +504,7 @@
             margin-bottom: 5px;
             color: #f4f5e5;
         }
+
         .footer::before {
             position: absolute;
             content: '';
@@ -856,7 +858,9 @@
     </section>
     <!--===========Footer=================-->
     <div class="footer">
-        <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
+        <div class="footer">
+            <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
+        </div>
     </div>
 </body>
 </html>
