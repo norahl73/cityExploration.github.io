@@ -249,8 +249,8 @@
         <div class="logo">
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="#">Stickers</a></li>
+                <li><a href="dairymarket/dairymarket.html">Dairy Market</a></li>
+                <li><a href="downtown/downtown.html">Downtown</a></li>
             </ul>
         </div>
     </section>
@@ -271,57 +271,71 @@
     </div>
 
     <script>
-        // Mapping QR codes to sticker images - can make our own stickers ??
-        const stickerImages = {
-            "sticker_1": "https://example.com/sticker1.png",
-            "sticker_2": "https://example.com/sticker2.png",
-            "sticker_3": "https://example.com/sticker3.png"
-        }
-        function launchConfetti() {
-            const confettiSettings = { particleCount: 100, spread: 70, origin: { y: 0.6 } };
-            confetti(confettiSettings);
-        }
+        // make an array to hold all the pictures used for the sticker
+        const stickerpics = [
+            "https://i0.wp.com/cdn.makezine.com/uploads/2008/01/papermilk.jpg?resize=500%2C375&ssl=1",
+            "https://t3.ftcdn.net/jpg/06/47/98/46/360_F_647984617_20NcWOfvlkctAKp9uHUk870m6iGMS6h2.jpg",
+            "9B9600FE-FB03-4A2D-87B6-F9862C0A9218_4_5005_c.jpeg",
+            "9B9600FE-FB03-4A2D-87B6-F9862C0A9218_4_5005_c.jpeg"
+        ];
 
+        let counter = 0; // Counter to track the sticker to display next
+
+        // use local storage so user wont lose their stickers 
         function collectSticker(stickerId) {
             let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
 
-            if  (!stickers.includes(stickerId) && stickerImages[stickerId]) {
+            // need to check if we already added that sticker 
+            if (!stickers.includes(stickerId)) // if we don't already have that sticker, then we add it 
+            {
                 stickers.push(stickerId);
                 localStorage.setItem("stickers", JSON.stringify(stickers));
-
-                alert("🎉 New sticker collected!");
-                launchConfetti(); // Trigger confetti effect
-            } else if (stickers.includes(stickerId)) {
-            alert("You already have this sticker!");
+                alert("New sticker collected!");
             } else {
-                alert("Invalid QR Code.");
-            }
-            displayStickers();
+                alert("You already have this sticker!");
             }
 
+            displayStickers(); // display the sticker 
+        }
+
+        // keep all the stickers displayed
         function displayStickers() {
             let stickers = JSON.parse(localStorage.getItem("stickers")) || [];
             let stickerContainer = document.getElementById("stickerGallery");
             stickerContainer.innerHTML = stickers.map(sticker => 
-                `<div class="sticker"><img src="${stickerImages[sticker]}" alt="Sticker"></div>`
+                `<div class="sticker"><img src="${sticker}" alt="Sticker"></div>`
             ).join("");
         }
 
+        // scan the qr code successfully
         function onScanSuccess(decodedText) {
-            collectSticker(decodedText);
+            console.log("Decoded QR Code Text: ", decodedText); 
+
+            // if we're still in the range of given stickers, then move on and add next sticker
+            if (counter < stickerpics.length) {
+                collectSticker(stickerpics[counter]);
+                counter++;
+            } else {
+                alert("You've collected all the stickers!");
+            }
         }
 
+        // actually keeps the camera feature...
         function onScanError(errorMessage) {
-            // Ignore errors (they happen when no QR code is detected)
+            
         }
 
+        // make the qr code scanner part 
         let html5QrcodeScanner = new Html5Qrcode("reader");
-        html5QrcodeScanner.start({ facingMode: "environment" }, {
+        html5QrcodeScanner.start({ facingMode: "environment" }, // which camera should be used
+        { 
             fps: 10,
-            qrbox: 250
+            qrbox: 250 // size of qr code area
         }, onScanSuccess, onScanError);
 
-        displayStickers(); // Show stickers on page load
+        // use this to display the stickers overall 
+        displayStickers();
+
     </script>
 </body>
 </html>

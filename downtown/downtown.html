@@ -23,8 +23,6 @@
                 box-sizing: border-box;
                 margin: 0;
             }
-
-
             body {
                 background-image: url("../images/background.webp");
                 background-position: center;
@@ -32,7 +30,6 @@
                 background-size: 100%;
                 background-attachment: fixed;
             }
-
             body, html {
                 margin: 0;
                 padding: 0;
@@ -439,6 +436,13 @@
                 align-items: center;
                 background-color: #4a574e;
             }
+            .footer h3 {
+                font-family: Fraunces;
+                font-weight: normal;
+                font-size: 15px;
+                margin-bottom: 5px;
+                color: #f4f5e5;
+            }
 
             .footer::before {
                 position: absolute;
@@ -450,90 +454,7 @@
                 bottom: 0;
                 right: 0;
             }
-
-            .footer .links {
-                position: relative;
-                color: #f4f5e5;
-                flex: 1;
-                display: flex;
-                flex-flow: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .links ul {
-                list-style-type: none;
-            }
-
-            .links h3 {
-                font-family: Fraunces;
-                font-weight: normal;
-                font-size: 23px;
-                margin-bottom: 5px;
-            }
-
-            .links li {
-                font-family: Fraunces;
-                cursor: pointer;
-                padding: 5px 0;
-            }
-
-            .links li:hover {
-                color: #FFA801;
-            }
-
             /*==========================Responsive=============================*/
-            @media all and (max-width: 1172px) {
-                .banner-text-item .form {
-                    display: flex;
-                    flex-flow: column;
-                    justify-content: center;
-                    align-items: center;
-                    width: 50%;
-                }
-
-
-                .banner-text-item .form input,
-                .banner-text-item .form .date,
-                .banner-text-item .form a {
-                    flex: 1;
-                    margin-bottom: 5px;
-                    font-size: 14px;
-                }
-
-                .banner-text-item .form input {
-                    width: 60%;
-                }
-
-                .banner-text-item .form .date {
-                    width: 30%;
-                }
-
-                .banner-text-item .form .book {
-                    width: 10%;
-                    font-size: 14px;
-                }
-
-                .banner-heading h1 {
-                    font-size: 60px;
-                }
-            }
-
-            @media all and (max-width: 1414px) {
-                .banner-text-item .form input {
-                    width: 40%;
-                }
-
-                .banner-text-item .form .date {
-                    width: 30%;
-                }
-
-                .banner-text-item .form .book {
-                    width: 20%;
-                    font-size: 14px;
-                }
-            }
-
             @media all and (max-width: 942px) {
                 .nav-bar {
                     display: flex;
@@ -577,18 +498,6 @@
 
                 .places-text {
                     margin-top: 200px;
-                }
-            }
-
-            @media all and (max-width: 928px) {
-                .banner .form input, a {
-                    font-size: 12px;
-                }
-            }
-
-            @media all and (max-width: 1173px) {
-                .banner .form {
-                    background-color: transparent;
                 }
             }
 
@@ -834,29 +743,21 @@
         <!--===========About Us===============-->
         <section class="about">
             <div class="about-img"> <img src="https://res.cloudinary.com/dxssqb6l8/image/upload/v1605293719/outdoor_tjjhxk.jpg"> </div>
-            <div class="about-text"> <small>ABOUT OUR COMPANY</small>
-                <h2>We are Go Trip Ravels Support Company</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p> <label><input type="checkbox" checked>Lorem ipsum dolor sit amet</label> <label><input type="checkbox" checked>consectetur adipisicing elit</label> <label><input type="checkbox" checked>Architecto atque consequuntur</label> <label><input type="checkbox" checked>cupiditate doloremque ducimus</label> <a href="#">ABOUT US</a>
+            <div class="about-text"> <small>TING PAVILION</small>
+                <h2>Keep up to date with events hosted by Charlottesville's very own Ting Pavilion!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p> 
+                <label><input type="checkbox" checked>Lorem ipsum dolor sit amet</label> 
+                <label><input type="checkbox" checked>consectetur adipisicing elit</label> 
+                <label><input type="checkbox" checked>Architecto atque consequuntur</label> 
+                <label><input type="checkbox" checked>cupiditate doloremque ducimus</label> 
+                <a href="#">ABOUT US</a>
             </div>
         </section>
         <!--===========Footer=================-->
         <div class="footer">
-            <div class="links">
-                <ul>
-                    <li>Offers & Discounts</li>
-                    <li>Get Coupon</li>
-                    <li>Contact Us</li>
-                    <li>About</li>
-                    <li>Frequently Asked Questions</li>
-                </ul>
+            <div class="footer">
+                <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
             </div>
         </div>
-        <script>
-            function scrollServices(direction) {
-                const container = document.querySelector('.services');
-                const scrollAmount = 300; // Adjust scroll speed
-                container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-            }
-        </script>
     </body>
 </html>
