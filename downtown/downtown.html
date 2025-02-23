@@ -171,6 +171,7 @@
                 height: 400px;
                 display: flex;
                 position: relative;
+                perspective: 1000px; /* Adds 3D perspective */
             }
 
             .service-item::before {
@@ -183,7 +184,6 @@
                 background-color: rgba(255, 255, 255, 0.8);
                 z-index: -1;
             }
-
 
             .service-item:hover {
                 box-shadow: 3px 3px 20px lightsteelblue;
@@ -202,10 +202,63 @@
             }
 
             .service-item img {
-                width: 300px;
-                height: 300px;
+                width: 275px;
+                height: 275px;
                 object-fit: cover;
                 z-index: 0;
+            }
+
+            .service-item-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform-style: preserve-3d;
+                transition: transform 1s;
+            }
+
+            .service-item:hover .service-item-inner {
+                transform: rotateY(180deg); /* Flip on hover */
+            }
+
+            .service-item-front {
+                padding: 20px;
+                display: flex;
+                flex-direction: column; /* Stack content vertically */
+                justify-content: center; /* Center vertically */
+                align-items: center; /* Center horizontally */
+                height: 100%; /* Make sure the height of the front is full */
+            }
+
+
+            .service-item-front,
+            .service-item-back {
+                text-align: center;
+                padding: 50px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                backface-visibility: hidden; /* Prevents the back side from showing when flipped */
+            }
+
+            .service-item-back {
+                transform: rotateY(180deg); /* Position the back face behind the front */
+                padding: 20px;
+                background-color: #f7f7f7;
+            }
+
+            .service-item-back p {
+                font-family: Candara;
+                font-size: 25px;
+                color: #333;
+                text-align: center;
+                padding: 10px;
             }
 
             .scroll-btn {
@@ -614,24 +667,79 @@
                 <h2>Must Visit Restaurants!</h2>
             </div>
             <button class="scroll-btn scroll-btn-left" onclick="scrollServices(-1)">&#10094;</button>
-            <section class="services">
-                <div class="service-item"> <img src="../images/downtown_restaurants/lucepasta.jpg">
-                    <h2>Luce Pasta</h2>
-                </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/mudhouse.jpg">
-                    <h2>Mudhouse</h2>
-                </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/kilwins.jpg">
-                    <h2>Kilwins</h2>
-                </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/maru.webp">
-                    <h2>Maru</h2>
-                </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/meltingpot.jpg">
-                    <h2>Melting Pot</h2>
-                </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/thaifresh.jpg">
-                    <h2>Thai Fresh</h2>
+
+                <div class="services">
+
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/lucepasta.jpg" alt="Service Image">
+                                <h2>Luce Pasta</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p>Ciao! A literal hole in the wall under a Downtown street light, Luce offers a small, perfect menu of pastas -- rolled, filled, and cut by hand -- along with a selection of extras, including fired pizzas, kale salad, and the best cheesecake ever (No, really).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/mudhouse.jpg" alt="Service Image">
+                                <h2>Mudhouse</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p>Charlottesville's home of the super fine espresso drinks and coffees roasted with care and brewed with love for maximum happiness.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/kilwins.jpg" alt="Service Image">
+                                <h2>Kilwins</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p> Our values are simple; Treat others as you want to be treated, Do your best, and Have fun! Coupled with our high quality products, in-store craftsmanship, and genuinely friendly staff we create an atmosphere that our customers want to visit again and again.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/maru.webp" alt="Service Image">
+                                <h2>Maru</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p>Maru, which is an idiom for "a family room to eat and gather" in Korean, is a modern take on traditional Korean food! Come and enjoy some delicious dishes with us!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/meltingpot.jpg" alt="Service Image">
+                                <h2>Melting Pot</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p>At The Melting Pot, fondue truly becomes a memorable four-course dining experience where patrons can dip into something different - and discover all the ingredients for a unique dining experience including a relaxed atmosphere, private tables, attentive service, fine wines and signature fondue dinners.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-item-inner">
+                            <div class="service-item-front">
+                                <img src="../images/downtown_restaurants/thaifresh.jpg" alt="Service Image">
+                                <h2>Thai Fresh</h2>
+                            </div>
+                            <div class="service-item-back">
+                                <p>Tucked just off Charlottesville’s Downtown Mall, Thai Fresh is a local favorite for fast, flavorful, and affordable Thai cuisine. From classic pad thai to rich red curry, every dish is made fresh with care. Open Monday through Saturday, with dine-in, takeout, and online ordering available—perfect for a quick and satisfying meal!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </section>
