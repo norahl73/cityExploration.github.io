@@ -29,10 +29,14 @@
                 background-repeat: repeat;
                 background-size: 100%;
                 background-attachment: fixed;
+                display: flex;
+                flex-direction: column;
             }
             body, html {
                 margin: 0;
                 padding: 0;
+                display: flex;
+                flex-direction: column;
             }
             .header {
                 padding: 40px;
@@ -341,8 +345,6 @@
                 height: 300px;
                 border-radius: 8px;
                 cursor: pointer;
-                margin: 0 auto;
-                object-fit: cover;
             }
 
             .cards .text {
@@ -365,7 +367,6 @@
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                width: 200px;
             }
 
             .cards .location {
@@ -488,14 +489,16 @@
 
             /*===============Footer===================*/
             .footer {
-                width: 100%;
+                width: 110%;
                 height: 100px;
-                position: relative;
+                position: absolute;
                 display: flex;
-                flex-flow: row wrap;
+                flex-flow: nowrap;
                 justify-content: center;
                 align-items: center;
                 background-color: #4a574e;
+                bottom: 0;
+                padding: 0;
             }
             .footer h3 {
                 font-family: Fraunces;
@@ -639,18 +642,6 @@
                 .about-img img {
                     width: 400px;
                     height: 400px;
-                }
-            }
-
-            @media all and (max-width: 708px) {
-                .footer{
-                    width: 100%;
-                    height: 670px;
-                    position: relative;
-                    display: flex;
-                    flex-flow: column wrap;
-                    justify-content: center;
-                    align-items: center;
                 }
             }
         </style>
@@ -884,9 +875,7 @@
         </section>
         <!--===========Footer=================-->
         <div class="footer">
-            <div class="footer">
-                <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
-            </div>
+            <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
         </div>
     </body>
 </html>
