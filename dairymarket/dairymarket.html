@@ -1,735 +1,873 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-        <title>Explore Charlottesville!</title>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-            @font-face {
-                font-family: 'HeaderFont';
-                src: url('../style/fonts/IFDurerDisplay-PERSONALUSE-Regular.ttf') format('truetype');
-                font-weight: normal;
-                font-style: normal;
-            }
-            * {
-                box-sizing: border-box;
-                margin: 0;
-            }
-            body {
-                background-image: url("../images/background.webp");
-                background-position: center;
-                background-repeat: repeat;
-                background-size: 100%;
-                background-attachment: fixed;
-            }
-            body, html {
-                margin: 0;
-                padding: 0;
-            }
-            .header {
-                padding: 40px;
-                text-align: center;
-                background: #974438;
-                color: #ca7c3a;
-                font-size: 60px;
-                font-family: 'HeaderFont';
-                padding-top: 40px;
-            }
-            .rating-group {
-                margin-bottom: 30px;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <title>Explore Charlottesville!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        @font-face {
+            font-family: 'HeaderFont';
+            src: url('../style/fonts/IFDurerDisplay-PERSONALUSE-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body {
+            background-image: url("../images/background.webp");
+            background-position: center;
+            background-repeat: repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            padding: 40px;
+            text-align: center;
+            background: #974438;
+            color: #ca7c3a;
+            font-size: 60px;
+            font-family: 'HeaderFont';
+            padding-top: 40px;
+        }
+        .rating-group {
+            margin-bottom: 30px;
+        }
 
-            .rating-container {
-                display: flex;
-                justify-content: center;
-                gap: 5px;
-                font-size: 2rem;
-                cursor: pointer;
-            }
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
 
-            .star {
-                color: rgb(177, 175, 173);
-                transition: color 0.3s;
-                cursor: pointer;
-            }
+        .star {
+            color: rgb(177, 175, 173);
+            transition: color 0.3s;
+            cursor: pointer;
+        }
 
-            .star rated {
-                color: gold;
-            }
+        .star rated {
+            color: gold;
+        }
 
-            /*------------------------Scroll Bar-----------------------*/
-            ::-webkit-scrollbar {
-                width: 20px;
-            }
+        /*------------------------Scroll Bar-----------------------*/
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
 
-            ::-webkit-scrollbar-track {
-                box-shadow: inset 0 0 5px grey;
-                border-radius: 10px;
-            }
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
 
-            ::-webkit-scrollbar-thumb {
-                background-color: #ca7c3a;
-                border-radius: 10px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background-color: #ca7c3a;
+            border-radius: 10px;
+        }
 
-            ::-webkit-scrollbar-thumb:hover {
-                background-color: #974438;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #974438;
+        }
 
-            /*========================Nav Bar=========================*/
+        /*========================Nav Bar=========================*/
+        .nav-bar {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            height: 90px;
+            background-color: #ca7c3a;
+            box-shadow: 3px 3px 10px lightslategray;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .logo {
+            flex: 1;
+            font-size: 40px;
+            padding: 20px;
+            margin-left: 50px;
+            font-family: 'HeaderFont';
+        }
+
+        ul.menu {
+            flex: 1;
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .menu li {
+            flex: 1;
+            list-style-type: none;
+            font-size: 16px;
+            font-family: Fraunces;
+            text-align: center;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #000;
+            text-transform: uppercase;
+            font-size: 25px;
+            font-family: Arapey;
+        }
+
+        .menu li a:hover {
+            color: #4a574e;
+            text-decoration: underline;
+        }
+        /*===========================Services===========================*/
+        .services-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .services {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: left;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+
+        .services::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-item {
+            flex: 0 0 auto;
+            padding: 50px 10px;
+            border: lightcyan solid 1px;
+            text-align: center;
+            margin: 10px 50px;
+            transition: all 1s;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            position: relative;
+            perspective: 1000px; /* Adds 3D perspective */
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: -1;
+        }
+
+        .service-item:hover {
+            box-shadow: 3px 3px 20px lightsteelblue;
+        }
+
+        .service-item h2 {
+            font-family: Fraunces;
+            font-size: 24px;
+            width: 250px;
+            color: #4a574e;
+            flex: 1;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            margin-top: 10px;
+        }
+
+        .service-item img {
+            width: 275px;
+            height: 275px;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .service-item-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .service-item:hover .service-item-inner {
+            transform: rotateY(180deg); /* Flip on hover */
+        }
+
+        .service-item-front {
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 100%; /* Make sure the height of the front is full */
+        }
+
+
+        .service-item-front,
+        .service-item-back {
+            text-align: center;
+            padding: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backface-visibility: hidden; /* Prevents the back side from showing when flipped */
+        }
+
+        .service-item-back {
+            transform: rotateY(180deg); /* Position the back face behind the front */
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        .service-item-back p {
+            font-family: Candara;
+            font-size: 25px;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            aspect-ratio: 1/1;
+            align-items: center;
+            justify-content: center;
+            display: flex
+
+        }
+
+        .scroll-btn-left {
+            left: 10px;
+        }
+
+        .scroll-btn-right {
+            right: 10px;
+        }
+
+        /*=============================Places===============================*/
+        .places-text {
+            text-align: center;
+            margin-bottom: 50px;
+            margin-top:50px;
+        }
+
+        .places-text small {
+            font-family: Fraunces;
+            color: #ca7c3a;
+            font-size: 15px;
+            font-weight: bolder;
+        }
+
+        .places-text h2 {
+            font-family: Fraunces;
+            font-size: 55px;
+            color: #974438;
+            letter-spacing: 1px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .card {
+            border: 1px solid lightgray;
+            box-shadow: 2px 2px 6px 0 974438(0, 0, 0, 0.3);
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            width: 80%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        .card img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cards .text {
+            width: 100%;
+            font-family: Fraunces;
+            line-height: 50px;
+            background-color: white;
+            opacity: 0.8;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .cards .card-box {
+            display: flex;
+            flex-flow: row;
+            background-color: #ca7c3a;
+            font-size: 18px;
+            font-family: Fraunces;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 200px;
+        }
+
+        .cards .location {
+            flex: 2;
+        }
+
+
+        /*------------Zoom in Photos--------------*/
+        .zoom-img {
+            float: left;
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .zoom-img .img-card {
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .img-card img {
+            -webkit-transition: 0.8s ease;
+            transition: 0.8s ease;
+            width: 550px;
+            height: 400px;
+        }
+
+        .card:hover .zoom-img img {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+
+        /*=========================About Us=========================*/
+        .about {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 150px;
+        }
+
+        .about-img {
+            flex: 1;
+        }
+
+        .about-img img {
+            width: 500px;
+            height: auto;
+            padding: 20px;
+            box-shadow: 2px 2px 6px 0 974438(0, 0, 0, 0.3);
+        }
+
+        .about-text {
+            flex: 1;
+            /*width: 100px;*/
+            display: flex;
+            flex-flow: column wrap;
+        }
+
+        .about-text small,
+        .about-text p,
+        .about-text input,
+        .about-text a {
+            flex: 1;
+            font-family: Fraunces;
+        }
+
+        .about-text small {
+            color: #ca7c3a;
+            font-size: 18px;
+        }
+
+        .about-text h2 {
+            flex: 1;
+            font-family: Fraunces;
+            font-size: 60px;
+            color: #4a574e;
+            width: 450px;
+            margin-bottom: 5px;
+        }
+
+        .about-text label {
+            padding-bottom: 10px;
+            color: #4a574e;
+            font-weight: bolder;
+            font-family: Fraunces;
+            letter-spacing: 1px;
+        }
+
+        .about-text p {
+            width: 500px;
+            line-height: 30px;
+            color: #4a574e;
+            font-weight: bolder;
+            padding: 20px 0;
+        }
+
+        .about-text a {
+            background-color: #f4f5e5;
+            border: 2px solid #974438;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 180px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 8px;
+            color: #974438;
+            font-weight: bolder;
+            font-size: 14px;
+        }
+
+        .about-text a:hover {
+            background-color: #974438;
+            color: #f4f5e5;
+        }
+
+        /*===============Footer===================*/
+        .footer {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: #4a574e;
+        }
+        .footer h3 {
+            font-family: Fraunces;
+            font-weight: normal;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #f4f5e5;
+        }
+
+        .footer::before {
+            position: absolute;
+            content: '';
+            display: block;
+            background-color: #974438(0, 0, 36, 0.80);
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+        /*==========================Responsive=============================*/
+        @media all and (max-width: 942px) {
             .nav-bar {
                 display: flex;
-                flex-flow: row wrap;
-                width: 100%;
-                height: 90px;
-                background-color: #ca7c3a;
-                box-shadow: 3px 3px 10px lightslategray;
-                align-items: center;
+                flex-flow: column wrap;
                 justify-content: center;
-                position: sticky;
-                top: 0;
-                z-index: 1;
+                align-items: center;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                position: static;
             }
 
             .logo {
                 flex: 1;
-                font-size: 40px;
-                padding: 20px;
-                margin-left: 50px;
-                font-family: 'HeaderFont';
+                font-size: 30px;
+                margin: 10px auto;
+                font-family: 'HeaderFont', sans-serif;
+                color: #FDE02F;
             }
 
-            ul.menu {
+            .nav-bar ul {
+                display: none;
+            }
+
+            .nav-bar ul li {
                 flex: 1;
-                display: flex;
-                flex-flow: row wrap;
-            }
-
-            .menu li {
-                flex: 1;
-                list-style-type: none;
-                font-size: 16px;
-                font-family: Fraunces;
-                text-align: center;
-            }
-
-            .menu li a {
-                text-decoration: none;
-                color: #000;
-                text-transform: uppercase;
-                font-size: 25px;
-                font-family: Arapey;
-            }
-
-            .menu li a:hover {
-                color: #4a574e;
-                text-decoration: underline;
-            }
-            /*===========================Services===========================*/
-            .services-container {
-                position: relative;
-                max-width: 100%;
-                overflow: hidden;
-                padding: 20px;
+                margin-bottom: 5px;
+                font-size: 14px;
             }
 
             .services {
                 display: flex;
-                flex-flow: row;
-                align-items: center;
-                justify-content: left;
-                gap: 20px;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                padding-bottom: 10px;
-                scrollbar-width: none;
+                flex-flow: column wrap;
             }
 
-            .services::-webkit-scrollbar {
-                display: none;
-            }
-
-            .service-item {
-                flex: 0 0 auto;
-                padding: 50px 10px;
-                border: lightcyan solid 1px;
-                text-align: center;
-                margin: 10px 50px;
-                transition: all 1s;
-                flex-flow: column;
-                align-items: center;
-                justify-content: center;
-                width: 400px;
-                height: 400px;
-                display: flex;
-                position: relative;
-            }
-
-            .service-item::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(255, 255, 255, 0.8);
-                z-index: -1;
-            }
-
-
-            .service-item:hover {
-                box-shadow: 3px 3px 20px lightsteelblue;
-            }
-
-            .service-item h2 {
-                font-family: Fraunces;
-                font-size: 24px;
-                width: 250px;
-                color: #4a574e;
+            .services .service-item {
                 flex: 1;
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-                z-index: 1;
+                margin-bottom: -130px;
+                width: 400px;
             }
 
-            .service-item img {
-                width: 300px;
-                height: 300px;
-                object-fit: cover;
-                z-index: 0;
-            }
-
-            .scroll-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(0, 0, 0, 0.6);
-                color: white;
-                border: none;
-                cursor: pointer;
-                width: 40px;
-                height: 40px;
-                padding: 10px;
-                border-radius: 50%;
-                font-size: 24px;
-                aspect-ratio: 1/1;
-                align-items: center;
-                justify-content: center;
-                display: flex
-
-            }
-
-            .scroll-btn-left {
-                left: 10px;
-            }
-
-            .scroll-btn-right {
-                right: 10px;
-            }
-
-            /*=============================Places===============================*/
             .places-text {
-                text-align: center;
-                margin-bottom: 50px;
-                margin-top:50px;
+                margin-top: 200px;
+            }
+        }
+
+        @media all and (max-width: 1194px) {
+            .places .card-box p {
+                font-size: 14px;
+            }
+        }
+
+        @media all and (max-width: 1086px) {
+            .places .cards .text {
+                line-height: 40px;
             }
 
-            .places-text small {
-                font-family: Fraunces;
-                color: #ca7c3a;
-                font-size: 15px;
-                font-weight: bolder;
+            .cards .text .h2 {
+                font-size: 12px;
             }
 
-            .places-text h2 {
-                font-family: Fraunces;
-                font-size: 55px;
-                color: #974438;
-                letter-spacing: 1px;
+            .cards .img-card img {
+                height: 260px;
             }
+        }
 
+        @media all and (max-width: 974px) {
             .cards {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-gap: 30px;
-                align-items: center;
-                justify-items: center;
-                text-align: center;
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                grid-gap: 20px;
             }
 
             .card {
-                border: 1px solid lightgray;
-                box-shadow: 2px 2px 6px 0 974438(0, 0, 0, 0.3);
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
-                width: 80%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-
-            .card img {
-                display: block;
-                margin: 0 auto;
-                max-width: 100%;
-                height: 300px;
-                border-radius: 8px;
-                cursor: pointer;
+                width: 300px;
+                height: 500px;
+                margin: auto;
             }
 
             .cards .text {
-                width: 100%;
+                padding: 5px;
                 font-family: Fraunces;
-                line-height: 50px;
-                background-color: white;
-                opacity: 0.8;
-                padding: 20px;
-                box-sizing: border-box;
             }
+        }
 
-
-            .cards .card-box {
-                display: flex;
-                flex-flow: row;
-                background-color: #ca7c3a;
-                font-size: 18px;
-                font-family: Fraunces;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                width: 200px;
+        @media all and (max-width: 1334px) {
+            .about-img img {
+                width: 300px;
+                height: 500px;
             }
+        }
 
-            .cards .location {
-                flex: 2;
-            }
-
-
-            /*------------Zoom in Photos--------------*/
-            .zoom-img {
-                float: left;
-                position: relative;
-                width: 100%;
-                height: 320px;
-                overflow: hidden;
-            }
-
-            .zoom-img .img-card {
-                position: absolute;
-                overflow: hidden;
-            }
-
-            .img-card img {
-                -webkit-transition: 0.8s ease;
-                transition: 0.8s ease;
-                width: 550px;
-                height: 400px;
-            }
-
-            .card:hover .zoom-img img {
-                -webkit-transform: scale(1.1);
-                transform: scale(1.1);
-            }
-
-            /*=========================About Us=========================*/
+        @media all and (max-width: 1116px) {
             .about {
                 display: flex;
-                flex-flow: row wrap;
-                align-items: center;
+                flex-flow: column wrap;
                 justify-content: center;
-                padding: 150px;
+                align-items: center;
             }
 
             .about-img {
                 flex: 1;
-            }
-
-            .about-img img {
-                width: 700px;
-                height: auto;
-                box-shadow: 2px 2px 6px 0 974438(0, 0, 0, 0.3);
+                margin-bottom: 20px;
             }
 
             .about-text {
                 flex: 1;
-                /*width: 100px;*/
-                display: flex;
-                flex-flow: column wrap;
-            }
-
-            .about-text small,
-            .about-text p,
-            .about-text input,
-            .about-text a {
-                flex: 1;
-                font-family: Fraunces;
-            }
-
-            .about-text small {
-                color: #ca7c3a;
-                font-size: 18px;
-            }
-
-            .about-text h2 {
-                flex: 1;
-                font-family: Fraunces;
-                font-size: 60px;
-                color: #4a574e;
-                width: 450px;
-                margin-bottom: 5px;
-            }
-
-            .about-text label {
-                padding-bottom: 10px;
-                color: #4a574e;
-                font-weight: bolder;
-                font-family: Fraunces;
-                letter-spacing: 1px;
-            }
-
-            .about-text p {
-                width: 500px;
-                line-height: 30px;
-                color: #4a574e;
-                font-weight: bolder;
-                padding: 20px 0;
-            }
-
-            .about-text a {
-                background-color: #f4f5e5;
-                border: 2px solid #974438;
-                text-decoration: none;
-                border-radius: 5px;
-                width: 250px;
-                padding: 15px;
+                margin: auto;
                 text-align: center;
-                margin-top: 8px;
-                color: #974438;
-                font-weight: bolder;
-                font-size: 14px;
-            }
-
-            .about-text a:hover {
-                background-color: #974438;
-                color: #f4f5e5;
-            }
-
-            /*===============Footer===================*/
-            .footer {
-                width: 100%;
-                height: 100px;
-                position: relative;
                 display: flex;
-                flex-flow: row wrap;
+                flex-flow: column;
                 justify-content: center;
                 align-items: center;
-                background-color: #4a574e;
-            }
-            .footer h3 {
-                font-family: Fraunces;
-                font-weight: normal;
-                font-size: 15px;
-                margin-bottom: 5px;
-                color: #f4f5e5;
             }
 
-            .footer::before {
-                position: absolute;
-                content: '';
-                display: block;
-                background-color: #974438(0, 0, 36, 0.80);
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-            }
-            /*==========================Responsive=============================*/
-            @media all and (max-width: 942px) {
-                .nav-bar {
-                    display: flex;
-                    flex-flow: column wrap;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
-                    height: auto;
-                    text-align: center;
-                    position: static;
-                }
-
-                .logo {
-                    flex: 1;
-                    font-size: 30px;
-                    margin: 10px auto;
-                    font-family: 'HeaderFont', sans-serif;
-                    color: #FDE02F;
-                }
-
-                .nav-bar ul {
-                    display: none;
-                }
-
-                .nav-bar ul li {
-                    flex: 1;
-                    margin-bottom: 5px;
-                    font-size: 14px;
-                }
-
-                .services {
-                    display: flex;
-                    flex-flow: column wrap;
-                }
-
-                .services .service-item {
-                    flex: 1;
-                    margin-bottom: -130px;
-                    width: 400px;
-                }
-
-                .places-text {
-                    margin-top: 200px;
-                }
+            .about-text h2{
+                font-size: 35px;
             }
 
-            @media all and (max-width: 1194px) {
-                .places .card-box p {
-                    font-size: 14px;
-                }
+            .about-img img {
+                width: 400px;
+                height: 400px;
             }
+        }
 
-            @media all and (max-width: 1086px) {
-                .places .cards .text {
-                    line-height: 40px;
-                }
-
-                .cards .text .h2 {
-                    font-size: 12px;
-                }
-
-                .cards .img-card img {
-                    height: 260px;
-                }
+        @media all and (max-width: 708px) {
+            .footer{
+                width: 100%;
+                height: 670px;
+                position: relative;
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
             }
+        }
+    </style>
+</head>
+<body>
+<!--===========Nav Bar=================-->
+<div class="header">
+    <h1>Explore Charlotteville's Historic Downtown!</h1>
+</div>
+<section class="nav-bar">
+    <div class="logo">
+        <ul class="menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="../sticker.html">Stickers</a></li>
+        </ul>
+    </div>
+</section>
+<!--=========Services===============-->
+<div class="services-container">
+    <div class="places-text">
+        <h2>Must Visit Restaurants!</h2>
+    </div>
+    <div class="services">
 
-            @media all and (max-width: 974px) {
-                .cards {
-                    display: grid;
-                    grid-template-columns: repeat(1, 1fr);
-                    grid-template-rows: repeat(6, 1fr);
-                    grid-gap: 20px;
-                }
-
-                .card {
-                    width: 300px;
-                    height: 500px;
-                    margin: auto;
-                }
-
-                .cards .text {
-                    padding: 5px;
-                    font-family: Fraunces;
-                }
-            }
-
-            @media all and (max-width: 1334px) {
-                .about-img img {
-                    width: 300px;
-                    height: 500px;
-                }
-            }
-
-            @media all and (max-width: 1116px) {
-                .about {
-                    display: flex;
-                    flex-flow: column wrap;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .about-img {
-                    flex: 1;
-                    margin-bottom: 20px;
-                }
-
-                .about-text {
-                    flex: 1;
-                    margin: auto;
-                    text-align: center;
-                    display: flex;
-                    flex-flow: column;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .about-text h2{
-                    font-size: 35px;
-                }
-
-                .about-img img {
-                    width: 400px;
-                    height: 400px;
-                    padding: 20px;
-                }
-            }
-
-            @media all and (max-width: 708px) {
-                .footer{
-                    width: 100%;
-                    height: 670px;
-                    position: relative;
-                    display: flex;
-                    flex-flow: column wrap;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <!--===========Nav Bar=================-->
-        <div class="header">
-            <h1>Explore Charlotteville's Dairy Market!</h1>
-        </div>
-        <section class="nav-bar">
-            <div class="logo">
-                <ul class="menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="history.html">History</a></li>
-                    <li><a href="../sticker.html">Stickers</a></li>
-                </ul>
-            </div>
-        </section>
-        <!--=========Services===============-->
-        <div class="services-container">
-            <div class="places-text">
-                <h2>Must Visit Restaurants!</h2>
-            </div>
-            <section class="services">
-                <div class="service-item"> <img src="../images/downtown_restaurants/lucepasta.jpg">
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/basta.avif" alt="Service Image">
                     <h2>Basta Pasta</h2>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/mudhouse.jpg">
-                    <h2>I Am Thai</h2>
+                <div class="service-item-back">
+                    <p>Ciao! A literal hole in the wall under a Downtown street light, Luce offers a small, perfect menu of pastas -- rolled, filled, and cut by hand -- along with a selection of extras, including fired pizzas, kale salad, and the best cheesecake ever (No, really).</p>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/kilwins.jpg">
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/dinos.jpg" alt="Service Image">
+                    <h2>Dinos</h2>
+                </div>
+                <div class="service-item-back">
+                    <p> Our values are simple; Treat others as you want to be treated, Do your best, and Have fun! Coupled with our high quality products, in-store craftsmanship, and genuinely friendly staff we create an atmosphere that our customers want to visit again and again.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/IamThai.jpg" alt="Service Image">
+                    <h2>I am Thai</h2>
+                </div>
+                <div class="service-item-back">
+                    <p>Maru, which is an idiom for "a family room to eat and gather" in Korean, is a modern take on traditional Korean food! Come and enjoy some delicious dishes with us!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/curry.jpg" alt="Service Image">
                     <h2>Currylicious</h2>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/maru.webp">
-                    <h2>Dino's</h2>
+                <div class="service-item-back">
+                    <p>Charlottesville's home of the super fine espresso drinks and coffees roasted with care and brewed with love for maximum happiness.
+                    </p>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/meltingpot.jpg">
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/maizal.jpg" alt="Service Image">
                     <h2>Maizal</h2>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/thaifresh.jpg">
+                <div class="service-item-back">
+                    <p>At The Melting Pot, fondue truly becomes a memorable four-course dining experience where patrons can dip into something different - and discover all the ingredients for a unique dining experience including a relaxed atmosphere, private tables, attentive service, fine wines and signature fondue dinners.</p>
+                </div>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/mashu.jpg" alt="Service Image">
                     <h2>Mashu Festival</h2>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/thaifresh.jpg">
+                <div class="service-item-back">
+                    <p>Tucked just off Charlottesville’s Downtown Mall, Thai Fresh is a local favorite for fast, flavorful, and affordable Thai cuisine. From classic pad thai to rich red curry, every dish is made fresh with care. Open Monday through Saturday, with dine-in, takeout, and online ordering available—perfect for a quick and satisfying meal!</p>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/moo%20thru.png" alt="Service Image">
                     <h2>Moo Thru</h2>
                 </div>
-                <div class="service-item"> <img src="../images/downtown_restaurants/thaifresh.jpg">
+                <div class="service-item-back">
+                    <p>Tucked just off Charlottesville’s Downtown Mall, Thai Fresh is a local favorite for fast, flavorful, and affordable Thai cuisine. From classic pad thai to rich red curry, every dish is made fresh with care. Open Monday through Saturday, with dine-in, takeout, and online ordering available—perfect for a quick and satisfying meal!</p>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="service-item">
+            <div class="service-item-inner">
+                <div class="service-item-front">
+                    <img src="../images/dairy_market_restaurants/sizzleshack.webp" alt="Service Image">
                     <h2>The Sizzle Shack</h2>
                 </div>
-            </section>
+                <div class="service-item-back">
+                    <p>Tucked just off Charlottesville’s Downtown Mall, Thai Fresh is a local favorite for fast, flavorful, and affordable Thai cuisine. From classic pad thai to rich red curry, every dish is made fresh with care. Open Monday through Saturday, with dine-in, takeout, and online ordering available—perfect for a quick and satisfying meal!</p>
+                </div>
+            </div>
         </div>
-        <!--==============Places===================-->
-        <section class="places">
-            <div class="places-text">
-                <h2>Our Favourite Places</h2>
-            </div>
-            <div class="cards">
-                <div class="card" onclick="window.location.href='https://quattrotizi.com/?srsltid=AfmBOory70oGG2FNo3eXiLaQY99WUmeX5pl8AMwo4jvHZ1wC-c2bdl0M';">
-                    <div class="zoom-img">
-                        <div class="img-card">
-                            <img src="../images/dairy_market/quattro.avif"alt="New Dominion Bookshop">
-                        </div>
-                    </div>
-                    <div class="text">
-                        <span class="rating"></span>
-                        <h2>Quattro Tizi</h2>
-                        <div class="rating-container" data-rating="0">
-                            <span class="rated-star" data-value="1">&#9733;</span>
-                            <span class="rated-star" data-value="2">&#9733;</span>
-                            <span class="rated-star" data-value="3">&#9733;</span>
-                            <span class="rated-star" data-value="4">&#9733;</span>
-                            <span class="star" data-value="5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="window.location.href='https://relayactive.com/?srsltid=AfmBOoqpUy8PuK9p8fEUGP9pXxfjJiAJ5O5hoiIOwJnPsvB26KlWeQIk';">
-                    <div class="zoom-img">
-                        <div class="img-card"> <img src="../images/dairy_market/rly.png"> </div>
-                    </div>
-                    <div class="text"> <span class="rating"></span>
-                        <h2>Relay Active</h2>
-                        <div class="rating-container" data-rating="0">
-                            <span class="rated-star" data-value="1">&#9733;</span>
-                            <span class="rated-star" data-value="2">&#9733;</span>
-                            <span class="rated-star" data-value="3">&#9733;</span>
-                            <span class="rated-star" data-value="4">&#9733;</span>
-                            <span class="star" data-value="5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="window.location.href='https://starrhill.com/';">
-                    <div class="zoom-img">
-                        <div class="img-card"> <img src="../images/dairy_market/starr.jpg"> </div>
-                    </div>
-                    <div class="text"> <span class="rating"></span>
-                        <h2>Star Hill Brewery</h2>
-                        <div class="rating-container" data-rating="0">
-                            <span class="rated-star" data-value="1">&#9733;</span>
-                            <span class="rated-star" data-value="2">&#9733;</span>
-                            <span class="rated-star" data-value="3">&#9733;</span>
-                            <span class="rated-star" data-value="4">&#9733;</span>
-                            <span class="star" data-value="5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='https://www.dairymarketcville.com/stalls/milkmans';">
-                    <div class="zoom-img">
-                        <div class="img-card"> <img src="../images/dairy_market/milkmans.webp"> </div>
-                    </div>
-                    <div class="text"> <span class="rating"></span>
-                        <h2>The Milkman's Bar</h2>
-                        <div class="rating-container" data-rating="0">
-                            <span class="rated-star" data-value="1">&#9733;</span>
-                            <span class="rated-star" data-value="2">&#9733;</span>
-                            <span class="rated-star" data-value="3">&#9733;</span>
-                            <span class="rated-star" data-value="4">&#9733;</span>
-                            <span class="rated-star" data-value="5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
-        <!--===========About Us===============-->
-        <section class="about">
-            <div class="about-img"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6284.780003067552!2d-78.49361032354106!3d38.03799807192018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b38718b5df620f%3A0x75acf19a21f6dd92!2sDairy%20Market%20Charlottesville!5e0!3m2!1sen!2sus!4v1740299487454!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
-            <div class="about-text"> <small>EVENTS</small>
-                <h2>Keep up to date with events at Dairy Market!</h2>
-                <p>The Dairy Market, housed in Charlottesville's historic Monticello Dairy building, is a modern food hall featuring local vendors serving diverse cuisines from pizza to Korean fusion. 
-                    This renovated 1930s dairy facility on Preston Avenue offers communal dining space, craft beer, and regular community events, making it a popular gathering spot for locals and visitors alike.</p> 
-                <a href="https://www.dairymarketcville.com/happenings">Events at Dairy Market</a>
+    </div>
+    <!--==============Places===================-->
+    <section class="places">
+        <div class="places-text">
+            <h2>Our Favourite Places</h2>
+        </div>
+        <div class="cards">
+            <div class="card" onclick="window.location.href='https://quattrotizi.com/?srsltid=AfmBOory70oGG2FNo3eXiLaQY99WUmeX5pl8AMwo4jvHZ1wC-c2bdl0M';">
+                <div class="zoom-img">
+                    <div class="img-card">
+                        <img src="../images/dairy_market/quattro.avif"alt="New Dominion Bookshop">
+                    </div>
+                </div>
+                <div class="text">
+                    <span class="rating"></span>
+                    <h2>Quattro Tizi</h2>
+                    <div class="rating-container" data-rating="0">
+                        <span class="rated-star" data-value="1">&#9733;</span>
+                        <span class="rated-star" data-value="2">&#9733;</span>
+                        <span class="rated-star" data-value="3">&#9733;</span>
+                        <span class="rated-star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!--===========Footer=================-->
+
+            <div class="card" onclick="window.location.href='https://relayactive.com/?srsltid=AfmBOoqpUy8PuK9p8fEUGP9pXxfjJiAJ5O5hoiIOwJnPsvB26KlWeQIk';">
+                <div class="zoom-img">
+                    <div class="img-card"> <img src="../images/dairy_market/rly.png"> </div>
+                </div>
+                <div class="text"> <span class="rating"></span>
+                    <h2>Relay Active</h2>
+                    <div class="rating-container" data-rating="0">
+                        <span class="rated-star" data-value="1">&#9733;</span>
+                        <span class="rated-star" data-value="2">&#9733;</span>
+                        <span class="rated-star" data-value="3">&#9733;</span>
+                        <span class="rated-star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="window.location.href='https://starrhill.com/';">
+                <div class="zoom-img">
+                    <div class="img-card"> <img src="../images/dairy_market/starr.jpg"> </div>
+                </div>
+                <div class="text"> <span class="rating"></span>
+                    <h2>Star Hill Brewery</h2>
+                    <div class="rating-container" data-rating="0">
+                        <span class="rated-star" data-value="1">&#9733;</span>
+                        <span class="rated-star" data-value="2">&#9733;</span>
+                        <span class="rated-star" data-value="3">&#9733;</span>
+                        <span class="rated-star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='https://www.dairymarketcville.com/stalls/milkmans';">
+                <div class="zoom-img">
+                    <div class="img-card"> <img src="../images/dairy_market/milkmans.webp"> </div>
+                </div>
+                <div class="text"> <span class="rating"></span>
+                    <h2>The Milkman's Bar</h2>
+                    <div class="rating-container" data-rating="0">
+                        <span class="rated-star" data-value="1">&#9733;</span>
+                        <span class="rated-star" data-value="2">&#9733;</span>
+                        <span class="rated-star" data-value="3">&#9733;</span>
+                        <span class="rated-star" data-value="4">&#9733;</span>
+                        <span class="rated-star" data-value="5">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--===========About Us===============-->
+    <section class="about">
+        <div class="about-img"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6284.780003067552!2d-78.49361032354106!3d38.03799807192018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b38718b5df620f%3A0x75acf19a21f6dd92!2sDairy%20Market%20Charlottesville!5e0!3m2!1sen!2sus!4v1740299487454!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
+        <div class="about-text"> <small>EVENTS</small>
+            <h2>Keep up to date with events at Dairy Market!</h2>
+            <p>The Dairy Market, housed in Charlottesville's historic Monticello Dairy building, is a modern food hall featuring local vendors serving diverse cuisines from pizza to Korean fusion.
+                This renovated 1930s dairy facility on Preston Avenue offers communal dining space, craft beer, and regular community events, making it a popular gathering spot for locals and visitors alike.</p>
+            <a href="https://www.dairymarketcville.com/happenings">Events at Dairy Market</a>
+        </div>
+    </section>
+    <!--===========About Us===============-->
+    <section class="about">
+        <div class="about-img"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.765222274123!2d-78.47925072368663!3d38.02925249745979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b386271b91c5bd%3A0x5a57b8a69f550594!2sTing%20Pavilion!5e0!3m2!1sen!2sus!4v1740298500963!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div>
+        <div class="about-text"> <small>TING PAVILION</small>
+            <h2>Keep up to date with events at Ting Pavilion!</h2>
+            <p>The Ting Pavilion is an outdoor amphitheater located in downtown Charlottesville, Virginia on the historic Downtown Mall.
+                It serves as a premier entertainment venue, hosting live concerts, community events, and performances throughout the year.
+                Originally known as the Sprint Pavilion, it was renamed to Ting Pavilion when Ting became its naming rights sponsor.
+                The venue features a distinctive white tensile roof structure and has become a cultural landmark in Charlottesville's vibrant downtown area.</p>
+            <a href="https://www.tingpavilion.com/">Ting's Website</a>
+        </div>
+    </section>
+    <!--===========Footer=================-->
+    <div class="footer">
         <div class="footer">
-            <div class="footer">
-                <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
-            </div>
+            <h3>Copyright KeypInTouch © 2025 All rights reserved.</h3>
         </div>
-    </body>
+    </div>
+</body>
 </html>
