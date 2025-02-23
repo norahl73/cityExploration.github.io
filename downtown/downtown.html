@@ -43,10 +43,10 @@
             .star {
                 color: rgb(177, 175, 173);
                 transition: color 0.3s;
+                cursor: pointer;
             }
 
-            .star:hover,
-            .star.active {
+            .star rated {
                 color: gold;
             }
 
@@ -635,10 +635,10 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>New Dominion Bookshop</h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
                             <span class="star" data-value="5">&#9733;</span>
                         </div>
                     </div>
@@ -650,10 +650,10 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>The Paramount</h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
                             <span class="star" data-value="5">&#9733;</span>
                         </div>
                     </div>
@@ -665,10 +665,10 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>Fralin Museum of Art</h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
                             <span class="star" data-value="5">&#9733;</span>
                         </div>
                     </div>
@@ -680,11 +680,11 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>Charlottesville City Market</h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
-                            <span class="star" data-value="5">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="5">&#9733;</span>
                         </div>
                     </div>
                 </div>
@@ -695,10 +695,10 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>The Whiskey Jar</h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
                             <span class="star" data-value="5">&#9733;</span>
                         </div>
                     </div>
@@ -710,10 +710,10 @@
                     <div class="text"> <span class="rating"></span>
                         <h2>Virginia Discovery Museum </h2>
                         <div class="rating-container" data-rating="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="rated-star" data-value="1">&#9733;</span>
+                            <span class="rated-star" data-value="2">&#9733;</span>
+                            <span class="rated-star" data-value="3">&#9733;</span>
+                            <span class="rated-star" data-value="4">&#9733;</span>
                             <span class="star" data-value="5">&#9733;</span>
                         </div>
                     </div>
@@ -747,40 +747,6 @@
                     .then(response => response.text())
                     .then(html => document.getElementById('content').innerHTML = html)
                     .catch(error => console.error('Error loading page:', error));
-            }
-            document.querySelectorAll(".rating-container").forEach(container => {
-                const stars = container.querySelectorAll(".star");
-                const ratingValue = container.nextElementSibling;
-
-                stars.forEach(star => {
-                    star.addEventListener("click", function() {
-                        let value = this.getAttribute("data-value");
-                        ratingValue.textContent = `Selected Rating: ${value}`;
-                        container.setAttribute("data-rating", value);
-                        highlightStars(container, value);
-                    });
-
-                    star.addEventListener("mouseover", function() {
-                        highlightStars(container, this.getAttribute("data-value"));
-                    });
-
-                    star.addEventListener("mouseout", function() {
-                        let selectedValue = container.getAttribute("data-rating");
-                        highlightStars(container, selectedValue);
-                    });
-                });
-
-                function highlightStars(container, value) {
-                    container.querySelectorAll(".star").forEach(star => {
-                        star.classList.toggle("active", star.getAttribute("data-value") <= value);
-                    });
-                }
-            });
-
-            function highlightStars(value) {
-                stars.forEach(star => {
-                    star.classList.toggle("active", star.getAttribute("data-value") <= value);
-                });
             }
         </script>
     </body>
