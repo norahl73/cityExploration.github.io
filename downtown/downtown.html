@@ -15,7 +15,7 @@
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
             @font-face {
                 font-family: 'HeaderFont';
-                src: url('style/fonts/IFDurerDisplay-PERSONALUSE-Regular.ttf') format('truetype');
+                src: url('../style/fonts/IFDurerDisplay-PERSONALUSE-Regular.ttf') format('truetype');
                 font-weight: normal;
                 font-style: normal;
             }
@@ -27,6 +27,14 @@
             body, html {
                 margin: 0;
                 padding: 0;
+            }
+            .header {
+                padding: 40px;
+                text-align: center;
+                background: #974438;
+                color: #ca7c3a;
+                font-size: 60px;
+                font-family: 'HeaderFont';
             }
             .rating-group {
                 margin-bottom: 30px;
@@ -596,15 +604,18 @@
     </head>
     <body>
         <!--===========Nav Bar=================-->
+        <div class="header">
+            <h1>Explore Charlotteville's Historic Downtown!</h1>
+        </div>
         <section class="nav-bar">
-            <div class="logo">Explore Charlottesville's Historic Downtown!</div>
-            <ul class="menu">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="restaurants.html">Popular Restaurants</a></li>
-                <li><a href="ting.html">Ting Pavilion</a></li>
-                <li><a href="history.html">History</a></li>
-                <li><a href="../sticker.html">Stickers</a></li>
-            </ul>
+            <div class="logo">
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="restaurants.html">Popular Restaurants</a></li>
+                    <li><a href="ting.html">Ting Pavilion</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="../sticker.html">Stickers</a></li>
+                </ul>
             </div>
         </section>
         <!--=========Services===============-->
@@ -625,7 +636,7 @@
         <!--==============Places===================-->
         <section class="places">
             <div class="places-text">
-                <h2>Favourite Places</h2>
+                <h2>Our Favourite Places</h2>
             </div>
             <div class="cards">
                 <div class="card">
